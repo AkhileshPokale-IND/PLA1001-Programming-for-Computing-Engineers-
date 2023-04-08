@@ -68,6 +68,42 @@ print("Number of φ's present in", x, "is", count)
 
 ```cpp
 
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int phi(int n) {
+    int result = n;
+    int p = 2;
+    while (p * p <= n+1) {
+        if (n % p == 0) {
+            while (n % p == 0) {
+                n = n / p;
+            }
+            result = result * (1 - (1 / (double)p));
+        }
+        p = p + 1;
+    }
+    if (n > 1) {
+        result -= result / n;
+    }
+    return (int)result;
+}
+
+int main() {
+    int x, count = 0;
+    cout << "Enter a number: ";
+    cin >> x;
+    for (int n = 1; n <= x; n++) {
+        cout << "phi(" << n << ", " << x << ") = " << phi(n) << endl;
+        if (phi(n) == 1) {
+            count++;
+        }
+    }
+    cout << "Number of phi's present in " << x << " is " << count << endl;
+    return 0;
+}
+
 
 ```
 
