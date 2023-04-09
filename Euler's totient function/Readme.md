@@ -1,115 +1,115 @@
+# Euler's Totient Function
 
-The arithmetic function Euler's totient function, also referred to as Euler's phi function, counts the positive integers less than or equivalent to n that are comparatively prime to n. It is indicated by φ(n).
+Euler's Totient Function, also known as Euler's phi function, is a mathematical function that counts the number of positive integers that are relatively prime to a given positive integer n.
 
-Here’s an example of how to calculate φ(8) using this algorithm:
+## Formula
 
-The prime factors of 8 are 2 and 3
-
-     φ(8) = 8 * (1 - 1/2) * (1 - 1/3) = 4
-
-
-
-***Steps of Euler's phi Algorithm***
-
-
--Start by calculating the totient value of the integer n.
-
--Set the outcome variable's initial value to n.
-
--Perform the following for each prime p-th component of n: The result value should now be updated to result = result * (1 - 1/p).
-
--Return the result's ultimate value.
-
-
-***Psedocode***
-
-
-1. Begin by calculating the totient value of the integer n.
-2. Set the outcome variable's initial value to n.
-3. Complete the following for each prime component p of n:
-    A. Divide n by p until it stops dividing n if p divides n.
-    b. Change the value of the result variable to result = result * (1 - 1/p).
-4. Each prime factor of n that is greater than sqrt(n) must be counted individually.
-5. Provide the result's ultimate value.
-
-
-<hr>
-
-***Python Implementation:***
-
-```python
-
-def phi(n):
-    result = n
-    p = 2
-    while p * p <= n+1:
-        if n % p == 0:
-            while n % p == 0:
-                n = n // p
-            result = result * (1 - (1 / int(p)))
-        p = p + 1
-    if n > 1:
-        result -= result // n
-    return int(result)
-
-x = int(input("Enter a number: "))
-count = 0
-for n in range(1, x+1):
-    print("φ(", n ,",", x,") = ", phi(n))
-    if phi(n) == 1:
-        count += 1
-
-print("Number of φ's present in", x, "is", count)
-
+The formula for the Euler's Totient Function is:
 
 ```
 
-***CPP Implementation***
+ϕ(n) = n × ∏(p|n) (1 - 1/p)
+```
 
-```cpp
+where `ϕ(n)` is the Euler's Totient Function of `n`, `p` are the distinct prime factors of `n`, and `|` denotes "divides".
 
-#include <iostream>
-#include <cmath>
-using namespace std;
+## Example
 
-int phi(int n) {
+Let's take the example of `n=10`.
+
+The prime factors of `10` are `2` and `5`.
+
+Therefore, the Euler's Totient Function of `10` is:
+
+```
+
+ϕ(10) = 10 × (1-1/2) × (1-1/5) = 4
+```
+
+So, there are `4` positive integers less than or equal to `10` that are relatively prime to `10`, which are `1`, `3`, `7`, and `9`.
+
+## Properties
+
+Some important properties of Euler's Totient Function are:
+
+- If `p` is a prime number, then `ϕ(p) = p - 1`.
+- If `a` and `b` are relatively prime, then `ϕ(ab) = ϕ(a) × ϕ(b)`.
+- If `n` is a positive integer, then `∑(d|n) ϕ(d) = n`, where `d` are the positive divisors of `n`.
+
+## Applications
+
+Euler's Totient Function has several applications in number theory and cryptography. It is used in:
+
+- The RSA encryption algorithm
+- The Miller-Rabin primality test
+- The Pollard's rho factorization algorithm
+
+## Implementation
+
+Here's an example implementation of the Euler's Totient Function in Python:
+
+```
+pythonCopy codedef euler_totient(n):
+    result = n
+    p = 2
+    while p * p <= n:
+        if n % p == 0:
+            while n % p == 0:
+                n //= p
+            result -= result // p
+        p += 1
+    if n > 1:
+        result -= result // n
+    return result
+```
+
+And here's an example implementation in Java:
+
+```
+javaCopy codepublic static int eulerTotient(int n) {
     int result = n;
-    int p = 2;
-    while (p * p <= n+1) {
-        if (n % p == 0) {
-            while (n % p == 0) {
-                n = n / p;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            while (n % i == 0) {
+                n /= i;
             }
-            result = result * (1 - (1 / (double)p));
+            result -= result / i;
         }
-        p = p + 1;
     }
     if (n > 1) {
         result -= result / n;
     }
-    return (int)result;
+    return result;
 }
+```
 
-int main() {
-    int x, count = 0;
-    cout << "Enter a number: ";
-    cin >> x;
-    for (int n = 1; n <= x; n++) {
-        cout << "phi(" << n << ", " << x << ") = " << phi(n) << endl;
-        if (phi(n) == 1) {
-            count++;
+And finally, here's an example implementation in C++:
+
+```
+cppCopy codeint eulerTotient(int n) {
+    int result = n;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            while (n % i == 0) {
+                n /= i;
+            }
+            result -= result / i;
         }
     }
-    cout << "Number of phi's present in " << x << " is " << count << endl;
-    return 0;
+    if (n > 1) {
+        result -= result / n;
+    }
+    return result;
 }
-
-
 ```
 
-***JavaImplementation***
-```java
+## References
 
+- [Euler's totient function - Wikipedia](https://en.wikipedia.org/wiki/Euler's_totient_function)
+- [Euler's Totient Function - Brilliant.org](https://brilliant.org/wiki/eulers-t)
 
+- [Euler's Totient Function - GeeksforGeeks](https://www.geeksforgeeks.org/eulers-totient-function/)
 
-```
+## Conclusion
+
+Euler's Totient Function is a powerful tool in number theory and cryptography. It can be used to compute the number of relatively prime integers to a given integer and has several applications in cryptography algorithms like RSA, Miller-Rabin primality test, and Pollard's rho factorization algorithm.
