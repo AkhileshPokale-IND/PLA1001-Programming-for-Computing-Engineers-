@@ -47,7 +47,7 @@ Euler's Totient Function has several applications in number theory and cryptogra
 Here's an example implementation of the Euler's Totient Function in Python:
 
 ```python
-euler_totient(n):
+def euler_totient(n):
     result = n
     p = 2
     while p * p <= n:
