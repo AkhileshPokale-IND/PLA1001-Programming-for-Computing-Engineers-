@@ -48,8 +48,8 @@ Euler's Totient Function has several applications in number theory and cryptogra
 
 Here's an example implementation of the Euler's Totient Function in Python:
 
-```
-pythonCopy codedef euler_totient(n):
+```python
+euler_totient(n):
     result = n
     p = 2
     while p * p <= n:
@@ -65,8 +65,8 @@ pythonCopy codedef euler_totient(n):
 
 And here's an example implementation in Java:
 
-```
-javaCopy codepublic static int eulerTotient(int n) {
+```java
+static int eulerTotient(int n) {
     int result = n;
     for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) {
@@ -85,8 +85,8 @@ javaCopy codepublic static int eulerTotient(int n) {
 
 And finally, here's an example implementation in C++:
 
-```
-cppCopy codeint eulerTotient(int n) {
+```cpp
+int eulerTotient(int n) {
     int result = n;
     for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) {
