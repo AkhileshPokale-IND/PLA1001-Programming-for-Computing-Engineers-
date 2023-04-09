@@ -7,7 +7,6 @@ Euler's Totient Function, also known as Euler's phi function, is a mathematical 
 The formula for the Euler's Totient Function is:
 
 ```
-
 ϕ(n) = n × ∏(p|n) (1 - 1/p)
 ```
 
@@ -22,7 +21,6 @@ The prime factors of `10` are `2` and `5`.
 Therefore, the Euler's Totient Function of `10` is:
 
 ```
-
 ϕ(10) = 10 × (1-1/2) × (1-1/5) = 4
 ```
 
